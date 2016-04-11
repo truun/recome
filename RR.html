@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<style>
+p.ex {
+    
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-right: 50px;
+    margin-left: 500px;
+   }
+p.exd {
+    
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-right: 50px;
+    margin-left: 350px;
+  }
+.box{
+  margin: 50px auto;
+  width: 500px;
+  height: 50px;
+   
+}
+
+.container-1{
+  width: 500px;
+  vertical-align: middle;
+  white-space: nowrap;
+  position: relative;
+ border: 2px #7e7e7e;
+}
+.button {
+    background-color: #7f7fff;
+    border: none;
+    color: white;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0px 0px;
+    cursor: pointer;
+}
+</style>
+<p class="ex"><img src="C:\Users\tarun.pc\Desktop\22\logo-quezx.png" alt="Mountain View" style="width:304px;height:150px;" align="middle"></p>     
+<br>
+<p style="color:#323232;"class="exd"><font size="7"> Job Skill Recommendation System</font></P>
+<body  bgcolor="#939393">
+<div class="box">
+   <div class="container-1">
+          <span class="icon><i class="fa fa-search"></i></span>
+          <input type="search" id="mySearch" oninput="B()"placeholder="Search.." list="roles" style="width: 500px; height: 30px; ">
+         <button class="button" onclick="A()">Go</button>
+   </div>
+</div>
+
+<datalist id="roles">
+</datalist>
+<br>
+<div  id="output"></div>
+
+
+<script>
+
+var arr;
+var options = '';
+function myFunction(p) {
+   arr=p;
+}
+
+function B(){
+ var h= document.getElementById("mySearch").value;
+ var g=h.toLowerCase();
+ 
+ 
+     if(h.length>=3){   
+	   document.getElementById("roles").innerHTML=options;
+	    options = '';
+	  
+	}
+	
+    for(var i=0;i<arr.length;i++){
+	      
+		  var role=arr[i].role;
+		  if(role[0]==h[0]){
+	      options += '<option value="'+role+'" />';} 
+		  else if( role[0]==g[0] ){
+		  options += '<option value="'+role+'" />';} 
+	}	
+	
+}
+
+function A(){
+
+      var x = document.getElementById("mySearch").value;
+      var out = "<br/>";
+    
+	
+	for( var i=0;i<arr.length;i++){
+	
+	  if(arr[i].role==x){
+	     out=out+ "Role:- " + arr[i].role + "<br>" +
+                      "Minimum salary:- " + arr[i].min_sal + "<br>" +
+                      "Maximum salary:- " + arr[i].max_sal + "<br>" + 
+                      "Skills:- " + arr[i].skills + "<br>" + 
+                      "Degrees:- " + arr[i].degrees + "<br>" + 
+                      "Employers:- " + arr[i].employers + "<br>" +
+                      "industries:- " + arr[i].industries + "<br>";
+
+		 break;
+	  }
+	
+	}
+	
+    document.getElementById("output").innerHTML = out;
+  
+}
+</script>
+<script src="jobs.js"></script>
+
+</body>
+</html>
